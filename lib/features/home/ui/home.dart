@@ -1,5 +1,6 @@
 import 'package:bloc_project/features/cart/ui/cart.dart';
 import 'package:bloc_project/features/home/bloc/home_bloc.dart';
+import 'package:bloc_project/features/home/ui/product_tile_widget.dart';
 import 'package:bloc_project/features/wishlist/ui/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +37,18 @@ class _HomeState extends State<Home> {
             context,
             MaterialPageRoute(builder: (context) => const Wishlist()),
           );
+        } else if (state is HomeProductItemCartedActionState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Item Carted"),
+            ),
+          );
+        } else if (state is HomeProductItemWishlistedActionState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Item Wishlisted"),
+            ),
+          );
         }
       },
       builder: (context, state) {
@@ -46,8 +59,10 @@ class _HomeState extends State<Home> {
               child: CircularProgressIndicator(),
             ));
           case HomeLoadedSuccessState:
+            final successState = state as HomeLoadedSuccessState;
             return Scaffold(
               appBar: AppBar(
+                  backgroundColor: Colors.white,
                   title:
                       const Text("Grocery App", style: TextStyle(fontSize: 20)),
                   actions: [
@@ -62,8 +77,14 @@ class _HomeState extends State<Home> {
                         },
                         icon: const Icon(Icons.shopping_bag_outlined)),
                   ]),
-              body: const Column(
-                children: [],
+              body: ListView.builder(
+                itemCount: successState.products.length,
+                itemBuilder: (context, index) {
+                  return ProductTileWidget(
+                    homeBloc: homeBloc,
+                    productDataModel: successState.products[index],
+                  );
+                },
               ),
             );
 
