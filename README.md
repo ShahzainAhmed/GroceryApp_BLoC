@@ -1,4 +1,4 @@
-# Grocery App using BLoC
+# BLoC Notes 
 <p align="center" width="50%">
     <img width="25%" src="https://github.com/user-attachments/assets/7414caf3-24f7-4a31-beba-617cccb6060c">
 </p>
