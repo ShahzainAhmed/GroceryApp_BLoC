@@ -1,5 +1,5 @@
 ## Why do we want to learn BLoC? What is the purpose of Statemanagement tool? Why we should learn it?
-Most of the companies are using BLoC because it is easy to understand and it clearly seperates the UI from the business logic (between UI and network logic there is business logic which is going to make a connection between UI and network logic, so business layer that is BLoC it is going ot act as an layer so that u can keep it clean, that happens in clean architecutre, UI is not getting mixed with API calls) and network logic (API calls/ database connections). 
+Most of the companies are using BLoC because it is easy to understand and it clearly seperates the UI from the business logic (between UI and network logic there is business logic which is going to make a connection between UI and network logic, so business layer that is BLoC it is going to act as an layer so that u can keep it clean, that happens in clean architecutre, UI is not getting mixed with API calls) and network logic (API calls/ database connections). 
 
 Every feature(screen) we have to make a seperate bloc logic, so add extension of bloc and then add it, and in that we going to write logic
 
